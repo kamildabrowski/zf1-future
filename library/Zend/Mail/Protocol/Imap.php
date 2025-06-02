@@ -598,6 +598,8 @@ class Zend_Mail_Protocol_Imap
                 if ($tokens[2][0] == $items[0]) {
                     $data = $tokens[2][1];
                 } else {
+                    // Declare variable if not match in for for expection error
+                    $data = null;
                     // maybe the server send an other field we didn't wanted
                     $count = count($tokens[2]);
                     // we start with 2, because 0 was already checked
@@ -607,7 +609,7 @@ class Zend_Mail_Protocol_Imap
                         }
                         $data = $tokens[2][$i + 1];
                         break;
-                    }
+                    }                    
                 }
             } else {
                 $data = [];
