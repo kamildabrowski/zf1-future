@@ -598,10 +598,12 @@ class Zend_Mail_Protocol_Imap
                 if ($tokens[2][0] == $items[0]) {
                     $data = $tokens[2][1];
                 } else {
+                    // declare variable if for not success declared var
+                    $data = null;
                     // maybe the server send an other field we didn't wanted
                     $count = count($tokens[2]);
                     // we start with 2, because 0 was already checked
-                    for ($i = 2; $i < $count; $i += 2) {
+                    for ($i = 2; $i <= $count; $i += 2) {
                         if ($tokens[2][$i] != $items[0]) {
                             continue;
                         }
